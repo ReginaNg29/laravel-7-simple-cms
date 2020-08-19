@@ -15,3 +15,4 @@ yarn-error.log
 _ide_helper.php
 !resources/views/vendor
 public/mix-manifest.json
+.vagrant/
