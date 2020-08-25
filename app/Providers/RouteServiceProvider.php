@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\User;
+use App\Models\Item;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Route;
 
@@ -59,6 +60,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('category', Category::class);
         Route::model('page', Page::class);
         Route::model('user', User::class);
+        Route::model('item', Item::class);
         /** GENERATOR_MODEL_BINDER **/
     }
 

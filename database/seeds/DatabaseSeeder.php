@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->addUsers();
         $this->addContent();
+        $this->addItems();
     }
 
     /**
@@ -38,5 +39,14 @@ class DatabaseSeeder extends Seeder
         foreach (range(4, 5) as $p) {
             factory(\App\Models\Page::class, 2)->create(['parent_id' => $p]);
         }
+    }
+
+    /** 
+     * Add items
+     */
+    public function addItems(): void
+    {
+        \DB::table('items')->delete();
+        factory(\App\Models\Item::class, 5)->create();
     }
 }

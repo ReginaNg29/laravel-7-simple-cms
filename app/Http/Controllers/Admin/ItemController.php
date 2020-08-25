@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Base\Controllers\AdminController;
-use App\Http\Controllers\Admin\DataTables\ItemsDataTable;
-use App\Models\Items;
+use App\Http\Controllers\Admin\DataTables\ItemDataTable;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
-class itemsController extends AdminController
+class itemController extends AdminController
 {
     /**
      * @var array
@@ -20,13 +20,13 @@ class itemsController extends AdminController
     ];
 
     /**
-     * @param \App\Http\Controllers\Admin\DataTables\ItemsDataTable $dataTable
+     * @param \App\Http\Controllers\Admin\DataTables\ItemDataTable $dataTable
      *
      * @return mixed
      */
-    public function index(ItemsDataTable $dataTable)
+    public function index(ItemDataTable $dataTable)
     {
-        return $dataTable->render('admin.table', ['link' => route('admin.items.create')]);
+        return $dataTable->render('admin.forms.item', ['link' => route('admin.item.create')]);
     }
 
     /**
@@ -34,7 +34,7 @@ class itemsController extends AdminController
      */
     public function create()
     {
-        return view('admin.forms.items', $this->formVariables('items', null, $this->options()));
+        return view('admin.forms.item', $this->formVariables('item', null, $this->options()));
     }
 
     /**
@@ -45,61 +45,58 @@ class itemsController extends AdminController
      */
     public function store(Request $request)
     {
-        return $this->createFlashRedirect(Items::class, $request);
+        return $this->createFlashRedirect(Item::class, $request);
     }
 
     /**
-     * @param \App\Models\Items $items
+     * @param \App\Models\Item $item
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
      */
-    public function show(Items $items)
+    public function show(Item $item)
     {
-        return view('admin.show', ['object' => $items]);
+        return view('admin.show', ['object' => $item]);
     }
 
     /**
-     * @param \App\Models\Items $items
+     * @param \App\Models\Item $item
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
      */
-    public function edit(Items $items)
+    public function edit(Item $item)
     {
-        return view('admin.forms.items', $this->formVariables('Items', $items, $this->options($items->id)));
+        return view('admin.forms.item', $this->formVariables('item', $item, $this->options($item->id)));
     }
 
     /**
-     * @param \App\Models\Items $items
+     * @param \App\Models\Item $item
      * @param \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Exception
      */
-    public function update(Items $items, Request $request)
+    public function update(Item $item, Request $request)
     {
-        return $this->saveFlashRedirect($items, $request);
+        return $this->saveFlashRedirect($item, $request);
     }
 
     /**
-     * @param \App\Models\Items $items
+     * @param \App\Models\Item $item
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Exception
      */
-    public function destroy(Items $items)
+    public function destroy(Item $item)
     {
-        return $this->destroyFlashRedirect($items);
+        return $this->destroyFlashRedirect($item);
     }
 
-    /**
-     * @param null $id
-     *
+        /**
      * @return array
      */
-    protected function options($id = null): array
+    protected function options()
     {
-        return ['options' => Items::when($id !== null, function ($q) use ($id) {
-            return $q->where('id', '!=', $id);
-        })->pluck('id', 'amount', 'name', 'description')];
+        return ['options' => Item::pluck('id', 'amount', 'name', 'description')];
     }
+
 }

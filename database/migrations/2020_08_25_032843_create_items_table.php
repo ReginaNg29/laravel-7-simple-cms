@@ -1,4 +1,4 @@
-vagra<?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,15 +13,14 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('Items')){
-            Schema::create('Items', function (Blueprint $table) {
+        if(!Schema::hasTable('items')){
+            Schema::create('items', function (Blueprint $table) {
                 $table->increments ('id');
                 $table->unsignedInteger ('amount');
                 $table->string ('name');
                 $table->string ('description');
-                $table->string ('createdData');
-                $table->string ('updatedData');
-                $table->timestamps();
+                $table->timestamp('createdData')->nullable();
+                $table->timestamp('updatedData')->nullable();
             });
         }
     }
@@ -33,6 +32,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Items');
+        Schema::dropIfExists('items');
     }
 }

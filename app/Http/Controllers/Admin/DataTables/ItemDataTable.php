@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin\DataTables;
 
 use App\Base\Controllers\DataTableController;
-use App\Models\Items;
+use App\Models\Item;
 
-class ItemsDataTable extends DataTableController
+class ItemDataTable extends DataTableController
 {
     /**
      * @var string

@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use App\Models\Item;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +46,14 @@ $factory->define(\App\Models\Article::class, function (Faker $faker) {
         'description' => $faker->sentence(5),
         'published_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'title' => Str::title($faker->words(4, true))
+    ];
+});
+
+$factory->define(\App\Models\Item::class, function (Faker $faker) {
+    return [
+        'id' => $faker->randomNumber,
+        'amount' => $faker->randomNumber,
+        'name' => $faker->userName,
+        'description' => $faker->sentence(5)
     ];
 });
