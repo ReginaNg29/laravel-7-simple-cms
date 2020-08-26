@@ -177,3 +177,5 @@ if (!function_exists('icon')) {
         return '<i class="' . $class . '" data-feather="' . $icon . '"></i>';
     }
 }
+
+

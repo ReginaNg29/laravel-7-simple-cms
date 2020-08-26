@@ -9,22 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getIndex()
-    {
-        $items = DB::table('items')->get();
-        return view('admin.forms.item', ['items'=>$items]);
-    }
-
         /**
      * @param \App\Models\Item $items
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getitems(Item $item)
+    public function getitems()
     {
-        return view('admin.forms.item', ['object' => $item]);
+        $result= Item::all(); 
+        return view('admin.forms.item', ['items' => $result]);
     }
 }

@@ -17,6 +17,8 @@ class itemController extends AdminController
         'amount'   => 'nullable|integer',
         'name' => 'nullable|string|max:255',
         'description'       => 'nullable|string|max:255',
+        'createdData' => 'nullable|timestamp|max:255',
+        'createdData' => 'nullable|timestamp|max:255'
     ];
 
     /**
@@ -96,7 +98,7 @@ class itemController extends AdminController
      */
     protected function options()
     {
-        return ['options' => Item::pluck('id', 'amount', 'name', 'description')];
+        return ['options' => Item::pluck('id', 'amount', 'name', 'description', 'createdData', 'updatedData')];
     }
 
 }

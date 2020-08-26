@@ -81,6 +81,9 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('pSlug', function ($slug) {
             return Page::with('parent')->where('slug', $slug)->firstOrFail();
         });
+        Route::bind('iId', function ($itemId) {
+            return Item::with('item')->where('id', $itemId)->firstOrFail();
+        });
         /** GENERATOR_PARAMETER_BINDER **/
     }
 

@@ -17,7 +17,7 @@ class ItemDataTable extends DataTableController
      *
      * @var array
      */
-    protected $columns = ['id', 'amount', 'name', 'description'];
+    protected $columns = ['id', 'amount', 'name', 'description', 'createdData', 'updatedData'];
 
     /**
      * @var bool
