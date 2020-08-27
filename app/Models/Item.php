@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\DB;
 class Item extends SluggableModel
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['amount', 'name', 'description'];
+
+    /**
      * Customize the names of the columns used to store the timestamps.
      */
     const CREATED_AT = 'createdData';

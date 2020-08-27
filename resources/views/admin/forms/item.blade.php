@@ -6,6 +6,6 @@
 
 @section('content')
     @include('partials.admin.form.iteminput')
-    @include('partials.app.items')
+    @include('partials.app.item')
 @endsection
 

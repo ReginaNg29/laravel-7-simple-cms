@@ -51,7 +51,7 @@ $factory->define(\App\Models\Article::class, function (Faker $faker) {
 
 $factory->define(\App\Models\Item::class, function (Faker $faker) {
     return [
-        'id' => $faker->randomNumber,
+        'id' => $faker->unique()->randomDigit,
         'amount' => $faker->randomNumber,
         'name' => $faker->userName,
         'description' => $faker->sentence(5)
