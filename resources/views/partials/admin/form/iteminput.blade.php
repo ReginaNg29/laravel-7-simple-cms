@@ -7,7 +7,7 @@
             </div>
         @endif
 
-    <form action="" method="post" action="{{ route('item.store') }}">
+    <form action="{{ route('item.store') }}" method="post" name="addItem">
     @csrf
                 <div class="navbar">
                     <div class="control">
@@ -22,10 +22,12 @@
                         <label for="description">Description:</label>
                         <input type="text" name="description">
                     </div>
-                        <button type="submit" value="Update" class="button">Add</button>
-                        <button type="submit" value="Search" class="button" href="{{ route('item.store') }}">Search</button>
+                        <button type="submit" name="submitbutton" value="add" class="button">Add</button>
                     </div>
                 </div>
             </form>
+        <div class="navbar">
+        <button type="submit" name="submitbutton" value="search" class="button" onclick="window.location='{{ route('item.itemFilter') }}'">Search</button>
+        </div>
     </div>
 

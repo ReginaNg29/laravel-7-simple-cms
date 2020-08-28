@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Application;
 
-use App\Models\Item;
-use App\Http\Controllers\Admin\DataTables\ItemDataTable;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use App\Models\Item;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\DataTables\ItemDataTable;
 
 class ItemController extends Controller
 {
@@ -32,12 +31,26 @@ class ItemController extends Controller
         return $dataTable->render('admin.forms.item', ['link' => route('admin.item.create')]);
     }
 
+    public function findItemIndex(Request $request)
+    {
+     $sortBy='id';
+     $orderBy='desc';
+     $n = null;
+
+     if ($request->has('orderBy')) $orderBy = $request->query('orderBy');
+     if ($request->has('sortBy')) $sortBy = $request->query('sortBy');
+     if ($request->has('n')) $n = $request->query('n');
+
+     $item = Item::search($n)->orderBy($sortBy, $orderBy);
+     return view('partials.admin.app.item', compact('item', 'sortBy', 'orderBy', 'n'));
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
      */
     public function create(Request $request)
     {
-        $item= Item::all(); 
+        $item= Item::all()->sortByDesc('createdData');
         return view('admin.forms.item', ['items' => $item]);
     }
 
@@ -68,8 +81,8 @@ class ItemController extends Controller
             'createdData'=>$request->get('createdData'),
             'updatedData'=>$request->get('updatedData')
         ]);
-        
-        return view('admin.forms.item', ['items' => $item]);
+        $item= Item::all()->sortByDesc('createdData'); 
+        return back()->withInput();
     }
 
     /**
@@ -137,12 +150,7 @@ class ItemController extends Controller
         return ['options' => Item::pluck('id', 'amount', 'name', 'description', 'createdData', 'updatedData')];
     }
 
-    public function getSearchItem()
-    {
-        $iName = Input::get ('iName');
-        $item = Item::where('name', 'LIKE', '%'.$iName. '%')->get();
-            if (count($item)>0)
-                return view('welcome')->withDetails($item)->withQuery ($iName);
-                else return view ('welcome')->withMessage('No details found. Try to search again!');
+    public function itemFilter() {
+        return view ('partials.admin.nav.itemsearch');
     }
 }

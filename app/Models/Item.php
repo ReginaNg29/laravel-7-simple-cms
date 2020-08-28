@@ -39,4 +39,14 @@ class Item extends SluggableModel
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function scopeSearch($query, $n)
+    {
+        if ($n == null) return $query;
+        return $query
+            ->where('id', 'LIKE', "%{$n}%")
+            ->orWhere('amount', 'LIKE', "%{$n}%")
+            ->orWhere('name', 'LIKE', "%{$n}%")
+            ->orWhere('description', 'LIKE', "%{$n}%");
+    }
 }

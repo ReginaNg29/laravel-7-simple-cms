@@ -18,5 +18,9 @@ Route::get('c/{cSlug}', ['as' => 'category', 'uses' => 'PageController@getCatego
 Route::get('sitemap.xml', ['as' => 'sitemap', 'uses' => 'PageController@getSitemap']);
 Route::get('item', ['uses' => 'ItemController@create']);
 Route::post('item', ['uses' => 'ItemController@store', 'as'=> 'item.store']);
+Route::get('filter', ['uses' => 'ItemController@itemFilter', 'as'=>'item.itemFilter']);
+Route::post('filter', ['uses' => 'ItemController@itemFilter', 'as'=>'item.findItemIndex']);
+
+
 
 
