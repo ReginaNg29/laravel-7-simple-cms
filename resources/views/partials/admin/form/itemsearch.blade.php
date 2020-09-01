@@ -13,7 +13,7 @@
             </div>
         @endif
 
-    <form action="{{ route('item.search') }}" method="post">
+    <form action="{{ route('item.search') }}" method="post" role="search">
     @csrf
                 <div class="navbar">
                     <div class="control">

@@ -146,6 +146,6 @@ class ItemController extends Controller
     {
         $search=$request->get('q');
         $item=Item::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
-        return back(compact('search', 'items'));
+        return back($search, $items);
     }
 }
