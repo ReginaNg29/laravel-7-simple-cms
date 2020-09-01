@@ -13,8 +13,8 @@
             </div>
         @endif
 
-    <form action="{{ route('item.search') }}" method="GET">
-    {{ csrf_field() }}
+    <form action="{{ route('item.search') }}" method="post">
+    @csrf
                 <div class="navbar">
                     <div class="control">
                         <label for="id">ID:</label>

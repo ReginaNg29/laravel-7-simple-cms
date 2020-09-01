@@ -138,7 +138,7 @@ class ItemController extends Controller
     }
 
     public function itemFilter(Request $request) {
-        $item= Item::get();
+        $item= Item::all();
         return view('partials.admin.form.itemsearch', ['items' => $item]);
     }
 
