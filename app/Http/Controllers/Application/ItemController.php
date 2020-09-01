@@ -137,14 +137,15 @@ class ItemController extends Controller
         return ['options' => Item::pluck('id', 'amount', 'name', 'description', 'createdData', 'updatedData')];
     }
 
-    public function itemFilter() {
-        return view ('partials.admin.form.itemsearch');
+    public function itemFilter(Request $request) {
+        $item= Item::get();
+        return view('partials.admin.form.itemsearch', ['items' => $item]);
     }
 
     public function search(Request $request)
     {
         $search=$request->get('q');
-        $items=Item::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
+        $item=Item::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
         return view('partials.admin.form.itemsearch', compact('search', 'items'));
     }
 }

@@ -20,8 +20,8 @@
                         <label for="id">ID:</label>
                         <input type="text" name="q">
                     </div>
-                </div>
-                <button type="submit" class="button">Filter</button>
+                    <button type="submit" class="button">Filter</button>
+                </div>    
             </form>
 </div>
 
