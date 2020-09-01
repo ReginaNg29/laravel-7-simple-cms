@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Base\SluggableModel;
 use DateTimeInterface;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class Item extends SluggableModel
 {
@@ -38,15 +39,5 @@ class Item extends SluggableModel
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
-    }
-
-    public function scopeSearch($query, $n)
-    {
-        if ($n == null) return $query;
-        return $query
-            ->where('id', 'LIKE', "%{$n}%")
-            ->orWhere('amount', 'LIKE', "%{$n}%")
-            ->orWhere('name', 'LIKE', "%{$n}%")
-            ->orWhere('description', 'LIKE', "%{$n}%");
     }
 }

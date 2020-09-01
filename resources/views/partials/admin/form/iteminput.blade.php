@@ -29,5 +29,6 @@
         <div class="navbar">
         <button type="submit" name="submitbutton" value="search" class="button" onclick="window.location='{{ route('item.itemFilter') }}'">Search</button>
         </div>
+    </form>
     </div>
 

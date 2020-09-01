@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\DataTables\ItemDataTable;
+use Illuminate\Support\Facades\Input;
 
 class ItemController extends Controller
 {
@@ -29,20 +30,6 @@ class ItemController extends Controller
     public function index(ItemDataTable $dataTable)
     {
         return $dataTable->render('admin.forms.item', ['link' => route('admin.item.create')]);
-    }
-
-    public function findItemIndex(Request $request)
-    {
-     $sortBy='id';
-     $orderBy='desc';
-     $n = null;
-
-     if ($request->has('orderBy')) $orderBy = $request->query('orderBy');
-     if ($request->has('sortBy')) $sortBy = $request->query('sortBy');
-     if ($request->has('n')) $n = $request->query('n');
-
-     $item = Item::search($n)->orderBy($sortBy, $orderBy);
-     return view('partials.admin.app.item', compact('item', 'sortBy', 'orderBy', 'n'));
     }
 
     /**
@@ -151,6 +138,13 @@ class ItemController extends Controller
     }
 
     public function itemFilter() {
-        return view ('partials.admin.nav.itemsearch');
+        return view ('partials.admin.form.itemsearch');
+    }
+
+    public function search(Request $request)
+    {
+        $search=$request->get('q');
+        $items=Item::where('id', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view('partials.admin.form.itemsearch', compact('search', 'items'));
     }
 }

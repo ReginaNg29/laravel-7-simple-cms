@@ -19,7 +19,7 @@ Route::get('sitemap.xml', ['as' => 'sitemap', 'uses' => 'PageController@getSitem
 Route::get('item', ['uses' => 'ItemController@create']);
 Route::post('item', ['uses' => 'ItemController@store', 'as'=> 'item.store']);
 Route::get('filter', ['uses' => 'ItemController@itemFilter', 'as'=>'item.itemFilter']);
-Route::post('filter', ['uses' => 'ItemController@itemFilter', 'as'=>'item.findItemIndex']);
+Route::post('filter', ['uses' => 'ItemController@search', 'as'=>'item.search']);
 
 
 
