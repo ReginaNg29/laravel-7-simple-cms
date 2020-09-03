@@ -22,7 +22,7 @@
                         <label for="description">Description:</label>
                         <input type="text" name="description">
                     </div>
-                        <button type="submit" name="submitbutton" value="add" class="button">Add</button>
+                        <button type="submit" value="add" class="button">Add</button>
                     </div>
                 </div>
             </form>
@@ -39,5 +39,6 @@
                 </select>
             </div>
         </div>
+        </form>
     </div>
 

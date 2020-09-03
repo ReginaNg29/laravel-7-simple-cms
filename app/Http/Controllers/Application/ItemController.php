@@ -139,7 +139,7 @@ class ItemController extends Controller
     }
 
     public function itemFilterId() {
-        $item= Item::all();
+        $item= Item::simplePaginate(15);
         return view('partials.admin.form.itemsearchId', ['items' => $item]);
     }
 
@@ -167,29 +167,40 @@ class ItemController extends Controller
     {
         $id = $request->id;
         $name = $request->name;
-        $createdData = $request->createdDataFrom;
-        $createdData = $request->createdDataTo;
-        $updatedData = $request->updatedDataFrom;
-        $updatedData = $request->updatedDataTo;
-        $amount = $request->amount;
+        $amountFrom = $request->from;
+        $amountTo = $request->to;
+        $createdDataFrom = $request->createdDataFrom;
+        $createdDataTo = $request->createdDataTo;
+        $updatedDataFrom = $request->updatedDataFrom;
+        $updatedDataTo = $request->updatedDataTo;
 
-        if (empty($id) && empty($name) && empty($description))
-        {
-            Session::flash('You did not select any search.');
-            return redirect()->back();
-        }
-       
-        $item = Item::where('id', 'LIKE', '%' . request()->id . '%')
-                    ->when(request()->name, function($query) {
-                        $query->where('name', request()->name);
-                    })
-                    ->when(request()->createdDataFrom && request()->createdDataTo, function($query) {
-                        $query->whereBetween('createdData', [$request->get('createdDataFrom'), $request->get('createdDataTo')]);
-                    })
-                    ->when(request()->updatedData, function($query) {
-                        $query->whereBetween('updatedData', [$request->get('updatedDataFrom'), $request->get('updatedDataTo')]);
-                    })->get();
-
-        return view('partials.admin.form.itemsearchId', ['items' => $item]);
+        if (isset($_POST["submitButton"])) {
+            switch ($_POST["submitButton"]) {
+                case "filterId":
+                    $item = Item::where('id', 'LIKE', '%' . request()->id . '%')->get();
+                    return view('partials.admin.form.itemsearchId', ['items' => $item]);
+                break;
+                case "filterName":
+                    $item = Item::where('name', 'LIKE', '%' . request()->name . '%')->get();
+                    return view('partials.admin.form.itemsearchName', ['items' => $item]);
+                break;
+                case "filterAmount":
+                    $item = Item::whereBetween('amount', [$amountFrom, $amountTo])->get();
+                    return view('partials.admin.form.itemsearchAmount', ['items' => $item]);
+                break;
+                case "filterCreated":
+                    $item = Item::whereBetween('createdData', [$createdDataFrom, $createdDataTo])->get();
+                    return view('partials.admin.form.itemsearchCreated', ['items' => $item]);
+                break;
+                case "filterUpdated":
+                    $item = Item::whereBetween('updatedData', [$updatedDataFrom, $updatedDataTo])->get();
+                    return view('partials.admin.form.itemsearchUpdated', ['items' => $item]);
+                break;
+                case "back":
+                    $item= Item::all();
+                    return view('admin.forms.item', ['items' => $item]); 
+                break;
+            }
+            }
     }
 }

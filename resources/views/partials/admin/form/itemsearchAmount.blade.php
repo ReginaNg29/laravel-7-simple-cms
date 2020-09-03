@@ -22,8 +22,9 @@
                         <input type="text" name="to" placeholder="to">
                     </div>
                 </div>
-                <button type="submit" class="button" value="filterAmount" name="submit">Filter</button>
+                <button type="submit" class="button" value="filterAmount" name="submitButton">Filter</button>
             </form>
+            <button type="submit" class="button" value="back" name="submitButton" onclick="window.location='{{ route("item.store") }}'">Back</button>
 </div>
 
 @include('partials.app.item')

@@ -21,8 +21,9 @@
                         <input type="text" name="id">
                     </div>
                 </div>
-                <button type="submit" class="button" value="filterId" name="submit">Filter</button>
+                <button type="submit" class="button" value="filterId" name="submitButton">Filter</button>
             </form>
+            <button type="submit" class="button" value="back" name="submitButton" onclick="window.location='{{ route("item.store") }}'">Back</button>
 </div>
 
 @include('partials.app.item')

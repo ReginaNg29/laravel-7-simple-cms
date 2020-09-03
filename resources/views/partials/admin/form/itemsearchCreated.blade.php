@@ -19,11 +19,12 @@
                     <div class="control">
                         <label for="createdData">Created Data:</label>
                         From <input type="date" name="createdDataFrom">
-                        To <input type="date" name="createdDataFrom">
+                        To <input type="date" name="createdDataTo">
                     </div>
                 </div>
-                <button type="submit" class="button" value="filterCreated" name="submit">Filter</button>
+                <button type="submit" class="button" value="filterCreated" name="submitButton">Filter</button>
             </form>
+            <button type="submit" class="button" value="back" name="submitButton" onclick="window.location='{{ route("item.store") }}'">Back</button>
 </div>
 
 @include('partials.app.item')
