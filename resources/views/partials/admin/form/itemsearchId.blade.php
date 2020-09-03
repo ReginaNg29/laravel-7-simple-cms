@@ -18,10 +18,10 @@
                 <div class="navbar">
                     <div class="control">
                         <label for="id">ID:</label>
-                        <input type="text" name="q">
+                        <input type="text" name="id">
                     </div>
                 </div>
-                <button type="submit" class="button">Filter</button>
+                <button type="submit" class="button" value="filterId" name="submit">Filter</button>
             </form>
 </div>
 

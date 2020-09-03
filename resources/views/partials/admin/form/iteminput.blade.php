@@ -26,9 +26,18 @@
                     </div>
                 </div>
             </form>
+
         <div class="navbar">
-        <button type="submit" name="submitbutton" value="search" class="button" onclick="window.location='{{ route('item.itemFilter') }}'">Search</button>
+            <div class="control">
+                Search by: <select name="search" onchange="window.location.href=this.value;">
+                    <option value="filterBy">Select Search Option</option>
+                    <option value="{{ route('item.itemFilterId') }}">Search by ID</option>
+                    <option value="{{ route('item.itemFilterName') }}">Search by Name</option>
+                    <option value="{{ route('item.itemFilterAmount') }}">Search by Amount</option>
+                    <option value="{{ route('item.itemFilterCreated') }}">Search by Created Data</option>
+                    <option value="{{ route('item.itemFilterUpdated') }}">Search by Updated Data</option>
+                </select>
+            </div>
         </div>
-    </form>
     </div>
 
