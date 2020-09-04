@@ -57,3 +57,11 @@ $factory->define(\App\Models\Item::class, function (Faker $faker) {
         'description' => $faker->sentence(5)
     ];
 });
+
+$factory->define(\App\Models\Regina::class, function (Faker $faker) {
+    static $password;
+    return [
+        'email' => $faker->unique()->safeEmail,
+        'password' => $password ?: $password = bcrypt('secret'),
+    ];
+});

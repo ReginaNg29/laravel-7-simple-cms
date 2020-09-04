@@ -1,4 +1,5 @@
 <section class="section">
+    <div class="footer">
         <table style="width:100%; border: 1px solid #ddd; text-align: left;">
             <tr style="border: 1px solid #ddd;">
                 <th>Id</th>
@@ -19,3 +20,4 @@
             </tr>
             @endforeach
         </table>
+    </div>

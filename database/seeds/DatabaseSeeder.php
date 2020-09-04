@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->addUsers();
+        $this->addReginas();
         $this->addContent();
         $this->addItems();
     }
@@ -23,6 +24,15 @@ class DatabaseSeeder extends Seeder
     {
         \DB::table('users')->delete();
         \App\Models\User::create(['email' => 'admin@admin.com', 'password' => '123456']);
+    }
+
+    /**
+     * Add user (regina_testing)
+     */
+    public function addReginas(): void
+    {
+        \DB::table('reginas')->delete();
+        \App\Models\Regina::create(['name' => 'Regina Ng', 'username' => 'regina123', 'email' => 'regina@admin.com', 'password' => '111']);
     }
 
     /**

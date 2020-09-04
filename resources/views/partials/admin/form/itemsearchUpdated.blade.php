@@ -6,12 +6,7 @@
 
 <section class="section">
 <div class="item-box">
-    <!-- Success message -->
-    @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{Session::get('success')}}
-            </div>
-        @endif
+    <button type="submit" class="button is-dark" style="float:right" action="{{ route('item.showLogin') }}">Logout</button>
 
     <form action="{{ route('item.search') }}" method="post" role="search">
     @csrf

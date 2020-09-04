@@ -24,6 +24,8 @@ Route::get('filterName', ['uses' => 'ItemController@itemFilterName', 'as'=>'item
 Route::get('filterAmount', ['uses' => 'ItemController@itemFilterAmount', 'as'=>'item.itemFilterAmount']);
 Route::get('filterCreated', ['uses' => 'ItemController@itemFilterCreated', 'as'=>'item.itemFilterCreated']);
 Route::get('FilterUpdated', ['uses' => 'ItemController@itemFilterUpdated', 'as'=>'item.itemFilterUpdated']);
+Route::get('loginReginas', array('uses'=>'ReginaController@showLogin', 'as'=>'item.showLogin'));
+Route::post('loginReginas', array('uses'=>'ReginaController@doLogin'));
 
 
 

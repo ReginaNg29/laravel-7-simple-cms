@@ -5,6 +5,7 @@
 @endpush
 
 <section class="section">
+<button type="submit" class="button is-dark" style="float:right" action="{{ route('item.showLogin') }}">Logout</button>
 <div class="item-box">
     <!-- Success message -->
     @if(Session::has('success'))

@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Application;
 
 use App\Http\Controllers\Controller;
 use App\Models\Item;
+use App\Models\Regina;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\DataTables\ItemDataTable;
 use Illuminate\Support\Facades\Input;
-use Session;
+use Auth;
 
 class ItemController extends Controller
 {

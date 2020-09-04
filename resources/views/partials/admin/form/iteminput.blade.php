@@ -1,14 +1,12 @@
 <section class="section">
 <div class="item-box">
-    <!-- Success message -->
-    @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{Session::get('success')}}
-            </div>
-        @endif
-
+    <button type="submit" class="button is-dark" style="float:right" action="{{ route('item.showLogin') }}">Logout</button>
     <form action="{{ route('item.store') }}" method="post" name="addItem">
     @csrf
+        <div class="navbar is-light">
+            <div class="container">
+            <div class="navbar-menu">
+            <div class="navbar-start">
                 <div class="navbar">
                     <div class="control">
                         <label for="amount">Amount:</label>
@@ -39,6 +37,10 @@
                 </select>
             </div>
         </div>
+        </div>
+    </div>
+    </div>
+    </div>
         </form>
     </div>
 
