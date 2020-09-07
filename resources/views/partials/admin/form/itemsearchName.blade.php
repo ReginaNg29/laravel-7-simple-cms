@@ -5,20 +5,20 @@
 @endpush
 
 <section class="section">
-<div class="item-box">
-    <button type="submit" class="button is-dark" style="float:right" action="{{ route('item.showLogin') }}">Logout</button>
+    <div class="item-box">
+    <button type="submit" class="button is-dark" style="float:right" onclick="window.location='{{ route("item.destroy") }}'">Logout</button>
 
-    <form action="{{ route('item.search') }}" method="post" role="search">
-    @csrf
-        <div class="navbar">
-            <div class="control">
-                <label for="name">Name:</label>
-                <input type="text" name="name">
+        <form action="{{ route('item.search') }}" method="post" role="search">
+        @csrf
+            <div class="navbar">
+                <div class="control">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name">
+                </div>
             </div>
-        </div>
-        <button type="submit" class="button" value="filterName" name="submitButton">Filter</button>
-    </form>
-    <button type="submit" class="button" value="back" name="submitButton" onclick="window.location='{{ route("item.store") }}'">Back</button>
-</div>
+            <button type="submit" class="button" value="filterName" name="submitButton">Filter</button>
+        </form>
+        <button type="submit" class="button" value="back" name="submitButton" onclick="window.location='{{ route("item.store") }}'">Back</button>
+    </div>
 
 @include('partials.app.item')

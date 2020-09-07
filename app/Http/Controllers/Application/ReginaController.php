@@ -10,6 +10,7 @@ use View;
 use Validator;
 use Redirect;
 use Auth;
+use Session;
 use Illuminate\Support\Facades\Hash;
 
 class ReginaController extends Controller
@@ -53,6 +54,18 @@ class ReginaController extends Controller
             }
         }
     }
+
+    //logout
+    public function destroy(Regina $regina)
+    {
+        $regina=Regina::all()->first();
+        auth()->id();
+        if ($regina->id !== Auth::regina($id)->regina()->id) {
+            return $this->destroyFlashRedirect($regina);
+        }
+        return $this->redirectRoutePath('index', 'admin.delete.self');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -125,8 +138,5 @@ class ReginaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

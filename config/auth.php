@@ -86,6 +86,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'reginas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Regina::class,
+        ],
     ],
 
     /*

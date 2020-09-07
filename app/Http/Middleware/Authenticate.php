@@ -14,7 +14,6 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request): string
     {
-        //return route('auth.login');
-        return view('admin.forms.reginaMaster');
+        return route('auth.login');
     }
 }

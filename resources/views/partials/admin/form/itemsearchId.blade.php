@@ -5,26 +5,19 @@
 @endpush
 
 <section class="section">
-<button type="submit" class="button is-dark" style="float:right" action="{{ route('item.showLogin') }}">Logout</button>
-<div class="item-box">
-    <!-- Success message -->
-    @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{Session::get('success')}}
-            </div>
-        @endif
-
-    <form action="{{ route('item.search') }}" method="post" role="search">
-    @csrf
-                <div class="navbar">
-                    <div class="control">
-                        <label for="id">ID:</label>
-                        <input type="text" name="id">
-                    </div>
+<button type="submit" class="button is-dark" style="float:right" onclick="window.location='{{ route("item.destroy") }}'">Logout</button>
+    <div class="item-box">
+        <form action="{{ route('item.search') }}" method="post" role="search">
+        @csrf
+            <div class="navbar">
+                <div class="control">
+                    <label for="id">ID:</label>
+                    <input type="text" name="id">
                 </div>
-                <button type="submit" class="button" value="filterId" name="submitButton">Filter</button>
-            </form>
-            <button type="submit" class="button" value="back" name="submitButton" onclick="window.location='{{ route("item.store") }}'">Back</button>
-</div>
+            </div>
+        <button type="submit" class="button" value="filterId" name="submitButton">Filter</button>
+        </form>
+    <button type="submit" class="button" value="back" name="submitButton" onclick="window.location='{{ route("item.store") }}'">Back</button>
+    </div>
 
 @include('partials.app.item')

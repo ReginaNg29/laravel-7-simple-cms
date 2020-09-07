@@ -61,6 +61,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('page', Page::class);
         Route::model('user', User::class);
         Route::model('item', Item::class);
+        Route::model('regina', Regina::class);
         /** GENERATOR_MODEL_BINDER **/
     }
 
@@ -83,6 +84,9 @@ class RouteServiceProvider extends ServiceProvider
         });
         Route::bind('iId', function ($itemId) {
             return Item::with('item')->where('id', $itemId)->firstOrFail();
+        });
+        Route::bind('iregina', function ($reginaId) {
+            return Regina::with('regina')->where('id', $reginaId)->firstOrFail();
         });
 
         /** GENERATOR_PARAMETER_BINDER **/
