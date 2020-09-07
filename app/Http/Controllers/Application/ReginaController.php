@@ -58,12 +58,9 @@ class ReginaController extends Controller
     //logout
     public function destroy(Regina $regina)
     {
-        $regina=Regina::all()->first();
-        auth()->id();
-        if ($regina->id !== Auth::regina($id)->regina()->id) {
-            return $this->destroyFlashRedirect($regina);
-        }
-        return $this->redirectRoutePath('index', 'admin.delete.self');
+        Session::flush();
+        Auth::logout();
+     
     }
 
     /**

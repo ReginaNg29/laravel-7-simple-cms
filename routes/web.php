@@ -16,9 +16,7 @@ Route::get('a/{aSlug}', ['as' => 'article', 'uses' => 'PageController@getArticle
 Route::get('p/{pSlug}', ['as' => 'page', 'uses' => 'PageController@getPage']);
 Route::get('c/{cSlug}', ['as' => 'category', 'uses' => 'PageController@getCategory']);
 Route::get('sitemap.xml', ['as' => 'sitemap', 'uses' => 'PageController@getSitemap']);
-Route::get('item', [
-
-    'uses' => 'ItemController@create']);
+Route::get('item', ['uses' => 'ItemController@create']);
 Route::post('item', ['uses' => 'ItemController@store', 'as'=> 'item.store']);
 Route::get('filter', ['uses' => 'ItemController@itemFilterId', 'as'=>'item.itemFilterId']);
 Route::post('filter', ['uses' => 'ItemController@search', 'as'=>'item.search']);
@@ -29,7 +27,7 @@ Route::get('FilterUpdated', ['uses' => 'ItemController@itemFilterUpdated', 'as'=
 Route::get('loginReginas', array('uses'=>'ReginaController@showLogin', 'as'=>'item.showLogin'));
 Route::post('loginReginas', array('uses'=>'ReginaController@doLogin'));
 Route::get('logoutReginas', array('uses'=>'ReginaController@showLogin', 'as'=>'item.showLogin'));
-Route::post('logoutReginas', array('uses'=>'ReginaController@destroy', 'as'=>'item.destroy'));
+Route::post('logoutReginas', array('uses'=>'ReginaController@idestroy', 'as'=>'item.destroy'));
 
 
 
